@@ -9,11 +9,10 @@ class Villano(Sprite):
 		self.image = util.cargar_imagen('imagenes/auto.png')
 		self.rect = self.image.get_rect()
 		self.rect.move_ip(coord[1], coord[0])
-		self.dir = "l"
 		self.velocidad=vel
         
 	def update(self):
 		self.rect.y += self.velocidad
-		self.rect.y =self.rect.y %620
-		print self.rect.y
+		self.rect.y =self.rect.y % 595
+		
 		
