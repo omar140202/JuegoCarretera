@@ -63,9 +63,7 @@ def game():
 				 
             elif heroe.vida == 0 or heroe.puntos == 150:
 		            n.velocidad = 0 
-		            n.rect.y = 10                      
-            
-					
+		            n.rect.y = 10                      		
 	    
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -78,12 +76,8 @@ def game():
         screen.blit(texto_vida,(400,550))
         screen.blit(texto_puntos,(100,550))
     	if heroe.vida == 0:		
-			perder.play(1,(0))
-			screen.blit(texto_final,(180,250))
-			
-			
-			
-					
+			perder.play(1,(0)) #preguntar
+			screen.blit(texto_final,(180,250))	
         if heroe.puntos == 150:
 			screen.blit(texto_ganador,(180,250))
         
