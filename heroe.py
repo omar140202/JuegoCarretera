@@ -7,7 +7,7 @@ class Heroe(Sprite):
 	def __init__(self):
 		Sprite.__init__(self)
 		self.puntos = 0
-		self.vida = 100
+		self.vida = 30
 		self.imagenes = [util.cargar_imagen('imagenes\corredor_izq.png'),
 						util.cargar_imagen('imagenes\corredor_cayendo.png'),
 						util.cargar_imagen('imagenes\corredor_der.png'),

@@ -16,6 +16,7 @@ def game():
     pygame.display.set_caption( "El Cruce" )
     background_image = util.cargar_imagen('imagenes/carretera.jpg');
     pierde_vida = util.cargar_sonido('sonidos/bocina.wav')
+    perder = util.cargar_sonido('sonidos/gritar.wav')
     pygame.mouse.set_visible( False )
     temporizador = pygame.time.Clock()
     heroe = Heroe()
@@ -45,18 +46,20 @@ def game():
             if heroe.rect.colliderect(n.rect):
                 heroe.image = heroe.imagenes[1]
                 pierde_vida.play()
+                n.rect.y = 0
+                n.velocidad = randint(8,15)
                 if heroe.vida > 0:
                     heroe.vida=heroe.vida-1
-                if heroe.puntos > 0:
-                    heroe.puntos -=1
-            if n.rect.y > 579 and heroe.vida > 0:
+                if heroe.puntos > 3:
+                    heroe.puntos -= 3
+            if n.rect.y > 585 and heroe.vida > 0:
 				heroe.puntos += 1
 				if heroe.puntos < 50:
-					n.velocidad = randint(5,12)
+					n.velocidad = randint(3,10)
 				elif heroe.puntos < 100:
-					n.velocidad = randint(12,20)
+					n.velocidad = randint(8,15)
 				elif heroe.puntos < 150:
-					n.velocidad = randint(17,30)
+					n.velocidad = randint(13,20)
 				 
             elif heroe.vida == 0 or heroe.puntos == 150:
 		            n.velocidad = 0 
@@ -75,14 +78,19 @@ def game():
         screen.blit(texto_vida,(400,550))
         screen.blit(texto_puntos,(100,550))
     	if heroe.vida == 0:		
-			screen.blit(texto_final,(180,250))		
+			perder.play(1,(0))
+			screen.blit(texto_final,(180,250))
+			
+			
+			
+					
         if heroe.puntos == 150:
 			screen.blit(texto_ganador,(180,250))
         
         for n in villano:
             screen.blit(n.image, n.rect)
         pygame.display.update()
-        pygame.time.delay(10)
+        pygame.time.delay(5)
 
       
 if __name__ == '__main__':
