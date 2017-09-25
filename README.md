@@ -1,3 +1,3 @@
 # JuegoCarretera
 
-    "Omar Alejandro Espitia Sánchez"
+    Omar Alejandro Espitia Sánchez
